@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>一測定命運｜AI塔羅心理測驗</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; background: linear-gradient(to bottom, #1c1b33, #3e2f56); color: #fff; margin: 0; text-align: center; }
+    h1 { margin-top: 1em; font-size: 2em; }
+    .card-container { perspective: 1000px; margin: 2em auto; width: 240px; height: 340px; }
+    .card { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 1s; cursor: pointer; }
+    .card.flipped { transform: rotateY(180deg); }
+    .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
+    .front { background: url('cover.jpg') no-repeat center/cover; }
+    .back { transform: rotateY(180deg); background-size: cover; }
+    .btn { background: #ffc107; color: #000; border: none; padding: 0.6em 1.5em; font-size: 1em; border-radius: 6px; cursor: pointer; margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>🔮 一測定命運</h1>
+  <audio autoplay loop id="bgm"><source src="bgm.mp3" type="audio/mpeg"></audio>
+  <button onclick="toggleMute()" class="btn">🔊 靜音 / 播放</button>
+  <div class="card-container" onclick="flipCard()">
+    <div class="card" id="tarotCard">
+      <div class="card-face front"></div>
+      <div class="card-face back" style="background-image:url('star_sage.jpg');"></div>
+    </div>
+  </div>
+  <button class="btn" onclick="location.reload()">🔁 重新測驗</button>
+  <script>
+    function flipCard() {
+      document.getElementById("tarotCard").classList.toggle("flipped");
+    }
+    function toggleMute() {
+      const audio = document.getElementById("bgm");
+      audio.muted = !audio.muted;
+    }
+  </script>
+</body>
+</html>
